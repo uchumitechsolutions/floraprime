@@ -35,7 +35,7 @@ export class MemStorage implements IStorage {
   private async initializeProperties() {
     const sampleProperties: InsertProperty[] = [
       {
-        title: "Karen Residential Plot",
+        title: "Karen Residential Plottt",
         description: "Prime residential plot in the prestigious Karen area with excellent infrastructure and proximity to major amenities.",
         location: "Karen, Nairobi",
         price: "8500000",
