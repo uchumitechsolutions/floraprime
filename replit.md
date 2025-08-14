@@ -48,19 +48,14 @@ Express.js server following REST API principles with clean separation of concern
 - **Integration**: Shared schemas between frontend and backend
 
 ## Data Storage Strategy
-**Current Implementation**: In-memory storage with hardcoded sample data
-- **Rationale**: Rapid prototyping and development without database setup
-- **Limitations**: Data doesn't persist between server restarts
+**Current Implementation**: Frontend-only with local data storage
+- **Rationale**: Simplified architecture as requested by user - React-only without backend server
+- **Property Data**: Static data stored in `/client/src/data/properties.ts`
+- **Contact Forms**: Data stored in browser localStorage with key `flora-prime-contacts`
 
-**Database Configuration**: Drizzle ORM configured for PostgreSQL
-- **Rationale**: Type-safe ORM with excellent TypeScript integration
-- **Migration support**: Built-in schema migration capabilities
-- **Connection**: Neon Database serverless PostgreSQL configured
-
-**Schema Design**: Three main entities - users, properties, and contacts
-- **Properties**: Support for different types (plot, house, commercial) with flexible pricing
-- **Contacts**: Capture lead information from contact form submissions
-- **Users**: Basic user structure for future authentication features
+**Previous Backend Setup**: Express.js with in-memory storage (still configured but not used by frontend)
+- **Database Configuration**: Drizzle ORM configured for PostgreSQL (available for future use)
+- **Schema Design**: Three main entities - users, properties, and contacts
 
 ## Development Architecture
 **Build System**: Vite for fast development and optimized production builds

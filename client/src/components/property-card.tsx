@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { MapPin, Home, Ruler } from "lucide-react";
-import { Property } from "@shared/schema";
+import { Property } from "@/data/properties";
 
 interface PropertyCardProps {
   property: Property;

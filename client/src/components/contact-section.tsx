@@ -3,9 +3,6 @@ import { MapPin, Phone, Mail, UserCheck } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { apiRequest } from "@/lib/queryClient";
-import { insertContactSchema } from "@shared/schema";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -13,15 +10,19 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
 
-const contactFormSchema = insertContactSchema.extend({
+const contactFormSchema = z.object({
+  firstName: z.string().min(1, "First name is required"),
+  lastName: z.string().min(1, "Last name is required"),
+  email: z.string().email("Invalid email address"),
+  phone: z.string().min(1, "Phone number is required"),
   service: z.string().min(1, "Please select a service"),
+  message: z.string().min(1, "Message is required"),
 });
 
 type ContactFormData = z.infer<typeof contactFormSchema>;
 
 export default function ContactSection() {
   const { toast } = useToast();
-  const queryClient = useQueryClient();
 
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactFormSchema),
@@ -35,27 +36,22 @@ export default function ContactSection() {
     },
   });
 
-  const contactMutation = useMutation({
-    mutationFn: (data: ContactFormData) => apiRequest("POST", "/api/contact", data),
-    onSuccess: () => {
-      toast({
-        title: "Message sent successfully!",
-        description: "We'll get back to you within 24 hours.",
-      });
-      form.reset();
-      queryClient.invalidateQueries({ queryKey: ['/api/contacts'] });
-    },
-    onError: () => {
-      toast({
-        title: "Failed to send message",
-        description: "Please try again or contact us directly.",
-        variant: "destructive",
-      });
-    },
-  });
-
   const onSubmit = (data: ContactFormData) => {
-    contactMutation.mutate(data);
+    // Store contact form data in localStorage
+    const contacts = JSON.parse(localStorage.getItem('flora-prime-contacts') || '[]');
+    const newContact = {
+      ...data,
+      id: Date.now().toString(),
+      submittedAt: new Date().toISOString(),
+    };
+    contacts.push(newContact);
+    localStorage.setItem('flora-prime-contacts', JSON.stringify(contacts));
+
+    toast({
+      title: "Message sent successfully!",
+      description: "We'll get back to you within 24 hours.",
+    });
+    form.reset();
   };
 
   const contactInfo = [
@@ -286,10 +282,9 @@ export default function ContactSection() {
                   <Button 
                     type="submit" 
                     className="w-full bg-flora-gold hover:bg-flora-orange text-flora-charcoal font-semibold py-3 px-6 rounded-lg glow-button transition-all duration-300"
-                    disabled={contactMutation.isPending}
                     data-testid="button-send-message"
                   >
-                    {contactMutation.isPending ? "Sending..." : "Send Message"}
+                    Send Message
                   </Button>
                 </form>
               </Form>
