@@ -85,20 +85,20 @@ export default function ContactSection() {
     <section id="contact" className="py-20 bg-flora-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl font-bold text-flora-charcoal mb-4">Get In Touch</h2>
-          <div className="w-24 h-1 bg-flora-gold mx-auto mb-8"></div>
-          <p className="text-xl text-flora-gray-600 max-w-3xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-flora-charcoal mb-4">Get In Touch</h2>
+          <div className="w-16 sm:w-24 h-1 bg-flora-gold mx-auto mb-6 sm:mb-8"></div>
+          <p className="text-lg sm:text-xl text-flora-gray-600 max-w-3xl mx-auto px-4">
             Ready to turn your property dreams into reality? Contact us today for expert guidance
           </p>
         </motion.div>
         
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Contact Information */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -106,10 +106,10 @@ export default function ContactSection() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="bg-white rounded-xl shadow-lg p-8">
-              <h3 className="text-2xl font-semibold text-flora-charcoal mb-6">Contact Information</h3>
+            <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8">
+              <h3 className="text-xl sm:text-2xl font-semibold text-flora-charcoal mb-4 sm:mb-6">Contact Information</h3>
               
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 {contactInfo.map((info, index) => {
                   const Icon = info.icon;
                   return (
@@ -121,12 +121,12 @@ export default function ContactSection() {
                       transition={{ duration: 0.8, delay: index * 0.1 }}
                       viewport={{ once: true }}
                     >
-                      <div className={`w-12 h-12 ${info.color} rounded-full flex items-center justify-center mr-4`}>
-                        <Icon className="h-6 w-6 text-white" />
+                      <div className={`w-10 h-10 sm:w-12 sm:h-12 ${info.color} rounded-full flex items-center justify-center mr-3 sm:mr-4 flex-shrink-0`}>
+                        <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                       </div>
-                      <div>
-                        <h4 className="font-semibold text-flora-charcoal">{info.title}</h4>
-                        <p className="text-flora-gray-600 whitespace-pre-line">{info.details}</p>
+                      <div className="min-w-0">
+                        <h4 className="font-semibold text-flora-charcoal text-sm sm:text-base">{info.title}</h4>
+                        <p className="text-flora-gray-600 whitespace-pre-line text-sm sm:text-base break-words">{info.details}</p>
                       </div>
                     </motion.div>
                   );
@@ -134,15 +134,15 @@ export default function ContactSection() {
               </div>
               
               {/* Google Maps Embed */}
-              <div className="mt-8">
+              <div className="mt-6 sm:mt-8">
                 <iframe 
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d255281.19058156314!2d36.68228831562499!3d-1.302887099999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1172d84d49a7%3A0xf7cf0254b297924c!2sNairobi%2C%20Kenya!5e0!3m2!1sen!2s!4v1636366943234!5m2!1sen!2s"
                   width="100%" 
-                  height="250" 
+                  height="200"
+                  className="h-48 sm:h-64 w-full rounded-lg"
                   style={{ border: 0 }}
                   allowFullScreen 
                   loading="lazy" 
-                  className="rounded-lg"
                   title="Flora Prime Properties Location"
                 />
               </div>
@@ -156,12 +156,12 @@ export default function ContactSection() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="bg-white rounded-xl shadow-lg p-8">
-              <h3 className="text-2xl font-semibold text-flora-charcoal mb-6">Send us a Message</h3>
+            <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8">
+              <h3 className="text-xl sm:text-2xl font-semibold text-flora-charcoal mb-4 sm:mb-6">Send us a Message</h3>
               
               <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-4">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 sm:space-y-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <FormField
                       control={form.control}
                       name="firstName"

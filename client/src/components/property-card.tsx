@@ -33,28 +33,28 @@ export default function PropertyCard({ property, index }: PropertyCardProps) {
           className="property-image w-full h-48 object-cover"
         />
       </div>
-      <div className="p-6">
-        <h3 className="text-xl font-semibold text-flora-charcoal mb-2" data-testid={`property-title-${property.id}`}>
+      <div className="p-4 sm:p-6">
+        <h3 className="text-lg sm:text-xl font-semibold text-flora-charcoal mb-2 line-clamp-2" data-testid={`property-title-${property.id}`}>
           {property.title}
         </h3>
-        <p className="text-flora-gray-600 mb-3 flex items-center">
-          <MapPin className="h-4 w-4 text-flora-gold mr-2" />
-          {property.location}
+        <p className="text-sm sm:text-base text-flora-gray-600 mb-3 flex items-center">
+          <MapPin className="h-4 w-4 text-flora-gold mr-2 flex-shrink-0" />
+          <span className="truncate">{property.location}</span>
         </p>
-        <p className="text-flora-gray-600 mb-4 flex items-center">
+        <p className="text-sm sm:text-base text-flora-gray-600 mb-4 flex items-center">
           {property.type === 'house' ? (
-            <Home className="h-4 w-4 text-flora-green mr-2" />
+            <Home className="h-4 w-4 text-flora-green mr-2 flex-shrink-0" />
           ) : (
-            <Ruler className="h-4 w-4 text-flora-green mr-2" />
+            <Ruler className="h-4 w-4 text-flora-green mr-2 flex-shrink-0" />
           )}
-          {property.size}
+          <span className="truncate">{property.size}</span>
         </p>
-        <div className="flex justify-between items-center">
-          <span className="text-2xl font-bold flora-gold" data-testid={`property-price-${property.id}`}>
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
+          <span className="text-xl sm:text-2xl font-bold flora-gold" data-testid={`property-price-${property.id}`}>
             {formatPrice(property.price)}
           </span>
           <button 
-            className="bg-flora-green hover:bg-flora-charcoal text-white px-4 py-2 rounded-lg transition-colors duration-300"
+            className="bg-flora-green hover:bg-flora-charcoal text-white px-3 sm:px-4 py-2 rounded-lg transition-colors duration-300 text-sm sm:text-base w-full sm:w-auto"
             onClick={() => {
               // TODO: Implement property detail view
               alert(`View details for ${property.title}`);

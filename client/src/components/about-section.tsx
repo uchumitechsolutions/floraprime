@@ -27,21 +27,21 @@ export default function AboutSection() {
     <section id="about" className="py-20 bg-flora-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl font-bold text-flora-charcoal mb-4">About Flora Prime Properties</h2>
-          <div className="w-24 h-1 bg-flora-gold mx-auto mb-8"></div>
-          <p className="text-xl text-flora-gray-600 max-w-3xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-flora-charcoal mb-4">About Flora Prime Properties</h2>
+          <div className="w-16 sm:w-24 h-1 bg-flora-gold mx-auto mb-6 sm:mb-8"></div>
+          <p className="text-lg sm:text-xl text-flora-gray-600 max-w-3xl mx-auto px-4">
             Led by Director Paul K Ngugi, we are Kenya's trusted partner in real estate, 
             specializing in premium land and property transactions across the country.
           </p>
         </motion.div>
         
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -61,10 +61,10 @@ export default function AboutSection() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-3xl font-semibold text-flora-charcoal mb-6">
+            <h3 className="text-2xl sm:text-3xl font-semibold text-flora-charcoal mb-4 sm:mb-6">
               Your Trusted Real Estate Partner
             </h3>
-            <p className="text-flora-gray-600 mb-6 leading-relaxed">
+            <p className="text-sm sm:text-base text-flora-gray-600 mb-4 sm:mb-6 leading-relaxed">
               With years of experience in the Kenyan real estate market, Flora Prime Properties 
               has established itself as a leader in property transactions. We understand the 
               local market dynamics and provide personalized service to each client.

@@ -17,13 +17,13 @@ export default function HeroSection() {
       
       {/* Content */}
       <motion.div 
-        className="relative z-10 text-center text-white max-w-4xl mx-auto px-4"
+        className="relative z-10 text-center text-white max-w-4xl mx-auto px-4 sm:px-6 lg:px-8"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.2 }}
       >
         <motion.h1 
-          className="text-5xl md:text-7xl font-bold mb-6"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.4 }}
@@ -33,7 +33,7 @@ export default function HeroSection() {
         </motion.h1>
         
         <motion.p 
-          className="text-xl md:text-2xl mb-8 font-light"
+          className="text-lg sm:text-xl md:text-2xl mb-8 font-light px-2"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6 }}
@@ -43,7 +43,7 @@ export default function HeroSection() {
         
         <motion.a
           href="#properties"
-          className="inline-block bg-flora-gold hover:bg-flora-orange text-flora-charcoal font-semibold py-4 px-8 rounded-full text-lg glow-button transition-all duration-300"
+          className="inline-block bg-flora-gold hover:bg-flora-orange text-flora-charcoal font-semibold py-3 px-6 sm:py-4 sm:px-8 rounded-full text-base sm:text-lg glow-button transition-all duration-300"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.8 }}
