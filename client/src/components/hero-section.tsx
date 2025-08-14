@@ -8,7 +8,7 @@ export default function HeroSection() {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1500076656116-558758c991c1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&h=1080')"
+          backgroundImage: "url('https://jcomforthomes.co.ke/wp-content/uploads/2021/01/WhatsApp-Image-2021-08-10-at-15.33.20.jpeg.webp')"
         }}
       />
       
