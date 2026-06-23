@@ -23,6 +23,15 @@ export default function Navigation() {
     { href: "#contact", label: "Contact" },
   ];
 
+    const handleMobileNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  e.preventDefault();
+  setIsOpen(false);
+  setTimeout(() => {
+    const target = document.querySelector(href);
+    if (target) target.scrollIntoView({ behavior: "smooth" });
+  }, 300); // matches exit animation duration
+};
+
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${
       scrolled ? 'bg-white shadow-lg' : 'bg-white/95 backdrop-blur-sm shadow-lg'
@@ -79,7 +88,7 @@ export default function Navigation() {
                   key={item.href}
                   href={item.href}
                   className="block px-3 py-2 text-flora-charcoal hover:text-flora-gold transition-colors duration-300"
-                  onClick={() => setIsOpen(false)}
+                  onClick={(e) => handleMobileNavClick(e, item.href)}
                   data-testid={`mobile-nav-${item.label.toLowerCase()}`}
                 >
                   {item.label}
